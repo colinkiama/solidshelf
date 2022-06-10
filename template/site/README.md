@@ -1,8 +1,8 @@
-# {APP.NAME} web site source
+# Solid Shelf web site source
 
-[![{APP.NAME} logo](128.svg)](https://{GITHUB.ORG.ORIGINAL}.github.io/{GITHUB.APP.ORIGINAL})
+[![Solid Shelf logo](128.svg)](https://colinkiama.github.io/solidshelf)
 
-## [Visit the site.](https://{GITHUB.ORG.ORIGINAL}.github.io/{GITHUB.APP.ORIGINAL)
+## [Visit the site.](https://colinkiama.github.io/{GITHUB.APP.ORIGINAL)
 
 ## Features:
 

@@ -1,12 +1,12 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name={APP.NAME}
-GenericName={APP.GENERIC_NAME}
-Comment={APP.COMMENT}
-Categories={APP.CATEGORIES}
-Exec=com.github.{GITHUB.ORG}.{GITHUB.APP}
-Icon=com.github.{GITHUB.ORG}.{GITHUB.APP}
+Name=Solid Shelf
+GenericName=Book Tracker
+Comment=Track progress across your entire book library
+Categories=Office;Utility
+Exec=com.github.colinkiama.solidshelf
+Icon=com.github.colinkiama.solidshelf
 Terminal=false
-Keywords={APP.KEYWORDS}
+Keywords=book;library;shelf;reading;track;tracker;list;
 X-GNOME-UsesNotifications=true

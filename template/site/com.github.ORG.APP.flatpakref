@@ -1,12 +1,12 @@
 [Flatpak Ref]
-Name=com.github.{GITHUB.ORG}.{GITHUB.APP}
-Url=https://{GITHUB.ORG.ORIGINAL}.github.io/{GITHUB.APP.ORIGINAL}/repo
+Name=com.github.colinkiama.solidshelf
+Url=https://colinkiama.github.io/solidshelf/repo
 Branch=stable
-Title={APP.NAME}
-Comment={APP.COMMENT}
-Description={APP.DESCRIPTION}
-Icon=https://raw.githubusercontent.com/{GITHUB.ORG.ORIGINAL}/{GITHUB.APP.ORIGINAL}/main/data/128.svg
-Homepage=https://{GITHUB.ORG.ORIGINAL}.github.io/{GITHUB.APP.ORIGINAL}
+Title=Solid Shelf
+Comment=Track progress across your entire book library
+Description=Track progress across your entire book library
+Icon=https://raw.githubusercontent.com/colinkiama/solidshelf/main/data/128.svg
+Homepage=https://colinkiama.github.io/solidshelf
 IsRuntime=false
 RuntimeRepo=https://dl.flathub.org/repo/flathub.flatpakrepo
 GPGKey={GPGKey}

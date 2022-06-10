@@ -1,9 +1,9 @@
 /*
  * SPDX-License-Identifier: GPL-3.0-or-later
- * SPDX-FileCopyrightText: {COPYRIGHT.YEAR} {COPYRIGHT.NAME} <{COPYRIGHT.EMAIL}>
+ * SPDX-FileCopyrightText: 2022 Colin Kiama <colinkiama@gmail.com>
  */
 
-namespace {APP.NAMESPACE} {
+namespace SolidShelf {
     public GLib.Settings saved_state;
 
     public class Application : Gtk.Application {
@@ -16,11 +16,11 @@ namespace {APP.NAMESPACE} {
 
         public Application () {
             Object(
-                application_id: "com.github.{GITHUB.ORG}.{GITHUB.APP}",
+                application_id: "com.github.colinkiama.solidshelf",
                 flags: ApplicationFlags.FLAGS_NONE
             );
 
-            saved_state = new GLib.Settings ("com.github.{GITHUB.ORG}.{GITHUB.APP}.saved-state");
+            saved_state = new GLib.Settings ("com.github.colinkiama.solidshelf.saved-state");
 
             // Command-line options.
 
@@ -32,12 +32,12 @@ namespace {APP.NAMESPACE} {
             // Display the app description as the option context summary.
             // The option context summary is displayed above the set of options
             // on the --help screen.
-            set_option_context_summary (_("{APP.DESCRIPTION}"));
+            set_option_context_summary (_("Track progress across your entire book library"));
 
             // Display the copyright notice as the option context description.
             // The option context description is displayed below the set of options
             // on the --help screen.
-            set_option_context_description (_("Copyright ⓒ {COPYRIGHT.YEAR}-present {COPYRIGHT.NAME}. Licensed under GNU GPL version 3.0."));
+            set_option_context_description (_("Copyright ⓒ 2022-present Colin Kiama. Licensed under GNU GPL version 3.0."));
 
             // Add option: --version, -v
             add_main_option(
@@ -55,7 +55,7 @@ namespace {APP.NAMESPACE} {
                 // Print a minimal version string based on the GNU coding standards.
                 // https://www.gnu.org/prep/standards/standards.html#g_t_002d_002dversion
                 if (options.contains("version")) {
-                    print (@"{APP.NAME} $(Constants.Config.VERSION)\n");
+                    print (@"Solid Shelf $(Constants.Config.VERSION)\n");
 
                     // OK.
                     return 0;
