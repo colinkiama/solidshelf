@@ -30,13 +30,20 @@ gresource = gnome.compile_resources(
     source_dir: 'data'
 )
 
-executable(
-    meson.project_name(),
-    gresource,
+source_files = [
     'src' / 'Application.vala',
     'src' / 'MainWindow.vala',
     'src' / 'Widgets' / 'HeaderBar.vala',
     'src' / 'Constants' / 'Colors.vala',
+    'lib' / 'Enums' / 'ProgressType.vala',
+    'lib' / 'Model' / 'Book.vala',
+    'lib' / 'Structs' / 'Progress.vala',
+]
+
+executable(
+    meson.project_name(),
+    gresource,
+    source_files,
     config_header,
     dependencies: [
       dependency('granite', version: '>=5.2.4'),
