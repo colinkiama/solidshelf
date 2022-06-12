@@ -21,6 +21,11 @@ config_header = configure_file(
     configuration : conf_data
 )
 
+shared_deps = [
+    dependency('glib-2.0'),
+    dependency('gobject-2.0'),
+]
+
 # Custom resource support.
 # Place custom icons, etc. in the data/ directory
 # and add them to data/gresource.xml.
@@ -35,10 +40,10 @@ source_files = [
     'src' / 'MainWindow.vala',
     'src' / 'Widgets' / 'HeaderBar.vala',
     'src' / 'Constants' / 'Colors.vala',
-    'lib' / 'Enums' / 'ProgressType.vala',
-    'lib' / 'Model' / 'Book.vala',
-    'lib' / 'Structs' / 'Progress.vala',
 ]
+
+subdir('lib')
+subdir('tests')
 
 executable(
     meson.project_name(),
@@ -49,7 +54,8 @@ executable(
       dependency('granite', version: '>=5.2.4'),
       dependency('gtk+-3.0'),
       dependency('libhandy-1', version: '>=0.90.0'),
-      meson.get_compiler('vala').find_library('posix')
+      meson.get_compiler('vala').find_library('posix'),
+      solid_shelf_lib_dep
     ],
     install: true
 )
