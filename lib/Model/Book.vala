@@ -2,7 +2,7 @@ using SolidShelf.Structs;
 /**
  * A book to track.
  */
-public class SolidShelf.Model.Book {
+public class SolidShelf.Model.Book : Object {
     /**
      * A unique numeric identifier for each book used soley for the application. 
      * 
