@@ -55,7 +55,7 @@ namespace SolidShelf {
             // https://gnome.pages.gitlab.gnome.org/libhandy/
             // (Apps in elementary OS 6 use the Handy library extensions
             // instead of GTKApplicationWindow, etc., directly.)
-            Hdy.init();
+            Hdy.init( );
 
             // Define acclerators (keyboard shortcuts) for actions.
             MainWindow.define_action_accelerators ();

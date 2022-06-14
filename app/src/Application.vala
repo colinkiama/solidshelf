@@ -15,7 +15,7 @@ namespace SolidShelf {
         public static bool is_running_as_flatpak;
 
         public Application () {
-            Object(
+            Object (
                 application_id: "com.github.colinkiama.solidshelf",
                 flags: ApplicationFlags.FLAGS_NONE
             );
@@ -40,7 +40,7 @@ namespace SolidShelf {
             set_option_context_description (_("Copyright ⓒ 2022-present Colin Kiama. Licensed under GNU GPL version 3.0."));
 
             // Add option: --version, -v
-            add_main_option(
+            add_main_option( 
                 "version", 'v',
                 GLib.OptionFlags.NONE,
                 GLib.OptionArg.NONE,
@@ -49,12 +49,12 @@ namespace SolidShelf {
             );
 
             // Signal: Handle local options.
-            handle_local_options.connect((application, options) => {
+            handle_local_options.connect( (application, options) => {
                 // Handle option: --version, -v:
                 //
                 // Print a minimal version string based on the GNU coding standards.
                 // https://www.gnu.org/prep/standards/standards.html#g_t_002d_002dversion
-                if (options.contains("version")) {
+                if (options.contains( "version")) {
                     print (@"Solid Shelf $(Constants.Config.VERSION)\n");
 
                     // OK.
@@ -116,7 +116,7 @@ namespace SolidShelf {
             if (is_running_as_flatpak) {
                 Log.set_writer_func (logWriterFunc);
             }
-            binary_path = File.new_for_path (commandline_arguments[0]).get_path();
+            binary_path = File.new_for_path (commandline_arguments[0]).get_path ();
 
             return new Application ().run (commandline_arguments);
         }

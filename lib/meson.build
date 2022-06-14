@@ -1,5 +1,5 @@
 library_files = [
-    'Database' / 'Helpers' / 'StatementBuilder.vala',
+    'Database' / 'Helpers' / 'QueryBuilder.vala',
     'Database' / 'Interfaces' / 'DatabaseService.vala',
     'Database' / 'Interfaces' / 'Statement.vala',
     'Enums' / 'ProgressType.vala',
