@@ -1,6 +1,8 @@
+// TODO: All `num` functions need to have formatting override options "%d", ".2f", etc
 public class SolidShelf.Database.Helpers.QueryBuilder {
     StringBuilder query_string = new StringBuilder ();
     bool is_space_required = false;
+    bool was_set_used = false;
 
     public string add_space_if_required () {
         string result = is_space_required ? " " : "";
@@ -13,12 +15,17 @@ public class SolidShelf.Database.Helpers.QueryBuilder {
         is_space_required = true;
     }
 
+    public void mark_set_keyword_usage () {
+        if (!was_set_used) {
+            was_set_used = true;
+        }
+    }
+
     public QueryBuilder select (Gee.List<string> field_names) {
         const string LIST_ITEM_FORMAT_STRING = "%s, ";
         const string LIST_FINAL_ITEM_FORMAT_STRING = "%s";
 
         query_string.append_printf ("%sSELECT ", add_space_if_required ());
-
 
         for (int i = 0; i < field_names.size; i++) {
             string field_name = field_names[i];
@@ -43,6 +50,45 @@ public class SolidShelf.Database.Helpers.QueryBuilder {
         return this;
     }
 
+    public QueryBuilder update (string table_name) {
+        query_string.append_printf (
+            "%sUPDATE %s", add_space_if_required (),
+            table_name
+        );
+
+        require_space ();
+        return this;
+    }
+
+
+    public QueryBuilder set (string field_name, string field_value) {
+        query_string.append_printf (
+            "%s %s = '%s'",
+            was_set_used ?
+                ","
+                : add_space_if_required () + "SET",
+            field_name, field_value
+        );
+
+        mark_set_keyword_usage ();
+        require_space ();
+        return this;
+    }
+
+    public QueryBuilder set_num (string field_name, double field_value) {
+        query_string.append_printf (
+            "%s %s = %f",
+            was_set_used ?
+                ","
+                : add_space_if_required () + "SET",
+            field_name, field_value
+        );
+
+        mark_set_keyword_usage ();
+        require_space ();
+        return this;
+    }
+
     public QueryBuilder from (string table_name) {
         query_string.append_printf ("%sFROM %s", add_space_if_required (), table_name);
         require_space ();
@@ -56,7 +102,7 @@ public class SolidShelf.Database.Helpers.QueryBuilder {
     }
 
     public QueryBuilder greater_than (double num) {
-        query_string.append_printf ("%s> %f", add_space_if_required () ,num);
+        query_string.append_printf ("%s> %f", add_space_if_required () , num);
         require_space ();
         return this;
     }
@@ -159,14 +205,14 @@ public class SolidShelf.Database.Helpers.QueryBuilder {
         return this;
     }
 
-    public QueryBuilder and () {
-        query_string.append_printf ("%sAND", add_space_if_required ());
+    public QueryBuilder and (string r_value) {
+        query_string.append_printf ("%sAND %s", add_space_if_required (), r_value);
         require_space ();
         return this;
     }
 
-    public QueryBuilder or () {
-        query_string.append_printf ("%sOR", add_space_if_required ());
+    public QueryBuilder or (string r_value) {
+        query_string.append_printf ("%sOR %s", add_space_if_required (), r_value);
         require_space ();
         return this;
     }

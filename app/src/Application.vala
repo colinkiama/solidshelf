@@ -49,12 +49,12 @@ namespace SolidShelf {
             );
 
             // Signal: Handle local options.
-            handle_local_options.connect( (application, options) => {
+            handle_local_options.connect(   (application, options) => {
                 // Handle option: --version, -v:
                 //
                 // Print a minimal version string based on the GNU coding standards.
                 // https://www.gnu.org/prep/standards/standards.html#g_t_002d_002dversion
-                if (options.contains( "version")) {
+                if (options.contains(   "version")) {
                     print (@"Solid Shelf $(Constants.Config.VERSION)\n");
 
                     // OK.

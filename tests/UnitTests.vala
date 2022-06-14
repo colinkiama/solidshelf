@@ -8,7 +8,7 @@ class UnitTests {
            assert (true);
         });
 
-        Test.add_func ("/solid_shelf/select_query", () => {
+        Test.add_func ("/solid_shelf/query_builder/select", () => {
             QueryBuilder query_builder = new QueryBuilder ();
             query_builder
                 .select (new Gee.ArrayList<string>.wrap ({ "title", "author" }))
@@ -16,8 +16,21 @@ class UnitTests {
                 .where ("title")
                 .equal_to ("among us");
 
-            string book_query = query_builder.build ();
-            assert (book_query == "SELECT title, author FROM books WHERE title = 'among us';");
+            string select_book_query = query_builder.build ();
+            assert (select_book_query == "SELECT title, author FROM books WHERE title = 'among us';");
+        });
+
+        Test.add_func ("/solid_shelf/query_builder/update", () => {
+            QueryBuilder query_builder = new QueryBuilder ();
+            query_builder
+                .update ("books")
+                .set_num ("rank", 13)
+                .set ("author", "sus")
+                .where ("title")
+                .equal_to ("among us");
+
+            string update_book_query = query_builder.build ();
+            assert (update_book_query == "UPDATE books SET rank = 13.000000, author = 'sus' WHERE title = 'among us';");
         });
 
         return Test.run ();
